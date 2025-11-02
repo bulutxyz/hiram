@@ -215,13 +215,13 @@
           title: "Galata",
           artist: "Hira&Bulut",
           src: "1.mp3",
-          cover: "1.JPG"
+          cover: "1.jpg"
         },
         {
           title: "Herkesim",
           artist: "Hira&Bulut",
           src: "2.mp3",
-          cover: "2.JPG"
+          cover: "2.jpg"
         },
         {
           title: "Aşk Yok Olmaktır",
@@ -233,12 +233,11 @@
           title: "Bir Kış Masalı",
           artist: "Hira&Bulut",
           src: "4.mp3",
-          cover: "4.JPG"
+          cover: "4.jpg"
         },
         {
           title: "Benimle Kayboldun",
           artist: "Hira&Bulut",
-
           src: "5.mp3",
           cover: "5.jpg"
         }
@@ -260,9 +259,11 @@
         return Math.floor(sec/60)+":"+("0"+(sec%60)).slice(-2);
       }
       function updateSong() {
-        cover.src = songs[currentSong].cover;
-        miniCover.src = songs[currentSong].cover;
-        bgBlur.style.backgroundImage = `url('${songs[currentSong].cover}')`;
+        // Görsel formatlarını büyük-küçük harf duyarsız olarak ayarla
+        const coverFile = songs[currentSong].cover.toLowerCase().replace(/\.(jpg|jpeg|png)$/i, match => match.toLowerCase());
+        cover.src = coverFile;
+        miniCover.src = coverFile;
+        bgBlur.style.backgroundImage = `url('${coverFile}')`;
         audio.src = songs[currentSong].src;
         title.textContent = songs[currentSong].title;
         artist.textContent = songs[currentSong].artist;
