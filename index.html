@@ -210,6 +210,7 @@
     </style>
     <script>
       // Şarkı listesi (dosya adlarına dikkat!)
+      // Dosya uzantılarını küçük harfle tanımlayarak web uyumluluğunu artırıyoruz
       const songs = [
         {
           title: "Galata",
@@ -259,8 +260,8 @@
         return Math.floor(sec/60)+":"+("0"+(sec%60)).slice(-2);
       }
       function updateSong() {
-        // Görsel formatlarını büyük-küçük harf duyarsız olarak ayarla
-        const coverFile = songs[currentSong].cover.toLowerCase().replace(/\.(jpg|jpeg|png)$/i, match => match.toLowerCase());
+        // Web sunucusu uyumluluğu için dosya adlarını küçük harfle kullan
+        const coverFile = songs[currentSong].cover.toLowerCase();
         cover.src = coverFile;
         miniCover.src = coverFile;
         bgBlur.style.backgroundImage = `url('${coverFile}')`;
