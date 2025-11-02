@@ -210,37 +210,37 @@
     </style>
     <script>
       // Şarkı listesi (dosya adlarına dikkat!)
-      // Dosya uzantılarını küçük harfle tanımlayarak web uyumluluğunu artırıyoruz
+      // Dosya uzantılarını gerçek dosya adlarıyla eşleştiriyoruz
       const songs = [
         {
           title: "Galata",
           artist: "Hira&Bulut",
           src: "1.mp3",
-          cover: "1.jpg"
+          cover: "1.JPG"
         },
         {
           title: "Herkesim",
           artist: "Hira&Bulut",
           src: "2.mp3",
-          cover: "2.jpg"
+          cover: "2.JPG"
         },
         {
           title: "Aşk Yok Olmaktır",
           artist: "Hira&Bulut",
           src: "3.mp3",
-          cover: "3.jpg"
+          cover: "3.JPG"
         },
         {
           title: "Bir Kış Masalı",
           artist: "Hira&Bulut",
           src: "4.mp3",
-          cover: "4.jpg"
+          cover: "4.JPG"
         },
         {
           title: "Benimle Kayboldun",
           artist: "Hira&Bulut",
           src: "5.mp3",
-          cover: "5.jpg"
+          cover: "5.JPG"
         }
       ];
       let currentSong = 0;
@@ -260,11 +260,10 @@
         return Math.floor(sec/60)+":"+("0"+(sec%60)).slice(-2);
       }
       function updateSong() {
-        // Web sunucusu uyumluluğu için dosya adlarını küçük harfle kullan
-        const coverFile = songs[currentSong].cover.toLowerCase();
-        cover.src = coverFile;
-        miniCover.src = coverFile;
-        bgBlur.style.backgroundImage = `url('${coverFile}')`;
+        // Dosya adlarını olduğu gibi kullan, dönüşüm yapma
+        cover.src = songs[currentSong].cover;
+        miniCover.src = songs[currentSong].cover;
+        bgBlur.style.backgroundImage = `url('${songs[currentSong].cover}')`;
         audio.src = songs[currentSong].src;
         title.textContent = songs[currentSong].title;
         artist.textContent = songs[currentSong].artist;
